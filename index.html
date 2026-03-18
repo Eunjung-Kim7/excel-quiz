@@ -635,6 +635,7 @@ input,select,textarea{font-size:16px}
 <div class="tabs-wrap">
 <nav class="tabs">
   <div class="tab on"  onclick="goTab('home')"   id="t-home">🏠 홈</div>
+  <div class="tab"     onclick="goTab('plan')"   id="t-plan">📅 주차별 학습</div>
   <div class="tab"     onclick="goTab('learn')"  id="t-learn">📚 학습</div>
   <div class="tab"     onclick="goTab('quiz')"   id="t-quiz">🎯 퀴즈</div>
   <div class="tab"     onclick="goTab('error')"  id="t-error">⚠️ 에러</div>
@@ -642,7 +643,6 @@ input,select,textarea{font-size:16px}
   <div class="tab"     onclick="goTab('cert')"    id="t-cert">🏅 자격증</div>
   <div class="tab"     onclick="goTab('short')"  id="t-short">⌨️ 단축키</div>
   <div class="tab"     onclick="goTab('prog')"   id="t-prog">📈 진도</div>
-  <div class="tab"     onclick="goTab('plan')"   id="t-plan">📋 수업계획</div>
 </nav>
 </div><!-- /tabs-wrap -->
 
@@ -978,7 +978,7 @@ input,select,textarea{font-size:16px}
         <div style="font-size:.69rem;color:#f97316;line-height:1.6">자격증은 다음에… 학점만 챙기면 OK</div>
         <div id="persona-4-path" style="display:none;margin-top:10px;border-top:1px solid #fed7aa;padding-top:10px">
           <div onclick="event.stopPropagation();showPassEssentials()" style="background:#ea580c;color:#fff;border-radius:7px;padding:7px 10px;font-size:.72rem;font-weight:700;text-align:center;margin-bottom:5px;cursor:pointer">⚡ 시험 필수 함수 10개</div>
-          <div onclick="event.stopPropagation();goTab('plan')" style="background:#fff7ed;color:#c2410c;border:1.5px solid #fed7aa;border-radius:7px;padding:7px 10px;font-size:.72rem;font-weight:700;text-align:center;cursor:pointer">📋 수업계획 & 평가 기준</div>
+          <div onclick="event.stopPropagation();goTab('plan')" style="background:#fff7ed;color:#c2410c;border:1.5px solid #fed7aa;border-radius:7px;padding:7px 10px;font-size:.72rem;font-weight:700;text-align:center;cursor:pointer">📅 주차별 학습 & 평가 기준</div>
         </div>
       </div>
 
@@ -1032,7 +1032,7 @@ input,select,textarea{font-size:16px}
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
       <button onclick="goTab('quiz')" style="background:var(--blue);color:#fff;border:none;border-radius:8px;padding:8px 0;font-size:.78rem;font-weight:700;cursor:pointer">🎯 퀴즈</button>
       <button onclick="goTab('learn')" style="background:var(--card);color:var(--blue);border:1.5px solid var(--blue);border-radius:8px;padding:8px 0;font-size:.78rem;font-weight:700;cursor:pointer">📚 학습</button>
-      <button onclick="goTab('plan')" style="background:var(--card);color:var(--blue);border:1.5px solid var(--blue);border-radius:8px;padding:8px 0;font-size:.78rem;font-weight:700;cursor:pointer">📋 수업계획</button>
+      <button onclick="goTab('plan')" style="background:var(--card);color:var(--blue);border:1.5px solid var(--blue);border-radius:8px;padding:8px 0;font-size:.78rem;font-weight:700;cursor:pointer">📅 주차별 학습</button>
     </div>
   </div>
 
@@ -2126,13 +2126,13 @@ input,select,textarea{font-size:16px}
 ══════════════════════════════════════════ -->
 <div class="sec" id="s-plan">
   <div class="hero">
-    <div class="hero-sub">📋 수업 계획서</div>
+    <div class="hero-sub">📅 주차별 학습 가이드</div>
     <div class="hero-ttl">MS오피스실무</div>
     <div class="hero-desc">경영정보학과 1학년 · 3학점 · 전공필수 · 15주차</div>
   </div>
 
   <style>
-    /* ── 수업계획 전용 ── */
+    /* ── 주차별 학습 전용 ── */
     .pl-meta { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:20px; }
     .pl-mitem { background:#fff; border:1.5px solid var(--border); border-radius:10px; padding:11px 14px; }
     .pl-mlbl { font-size:.68rem; font-weight:700; color:var(--mu); text-transform:uppercase; letter-spacing:.05em; margin-bottom:3px; }
@@ -2169,6 +2169,15 @@ input,select,textarea{font-size:16px}
     .pl-witem.open .pl-wbody { display:block; }
     .pl-wcontent { font-size:.79rem; color:var(--t2); line-height:1.8; padding-top:10px; }
     .pl-wlinks { display:flex; flex-wrap:wrap; gap:6px; margin-top:10px; }
+    .pl-guide { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:12px; }
+    @media(max-width:500px){ .pl-guide{ grid-template-columns:1fr; } }
+    .pl-gcard { background:var(--bg); border:1.5px solid var(--border); border-radius:9px; padding:10px 12px; }
+    .pl-gcard-hdr { display:flex; align-items:center; gap:7px; margin-bottom:5px; }
+    .pl-gcard-ico { font-size:1rem; flex-shrink:0; width:22px; text-align:center; font-weight:800; color:var(--blue); }
+    .pl-gcard-ttl { font-size:.78rem; font-weight:800; color:var(--t1); }
+    .pl-gcard-desc { font-size:.7rem; color:var(--t2); line-height:1.6; margin-left:29px; }
+    .pl-gcard-tip { font-size:.67rem; color:#15803d; background:#f0fdf4; border-radius:5px; padding:4px 8px; margin-top:5px; margin-left:29px; line-height:1.5; }
+    .pl-guide-ttl { font-size:.68rem; font-weight:800; color:var(--mu); letter-spacing:.04em; text-transform:uppercase; margin-top:12px; margin-bottom:6px; display:flex; align-items:center; gap:6px; }
     .pl-wlink {
       font-size:.72rem; font-weight:700; padding:4px 11px; border-radius:20px;
       cursor:pointer; border:1.5px solid; transition:all .15s;
@@ -2486,6 +2495,13 @@ const WEEKS = [
   { w:1,  wed:'03/04', mon:'03/09', title:'엑셀 환경 이해와 데이터 입력 기초', ch:'Chapter 01',
     note:'※ 수강정정 기간 (03/05~03/09)',
     items:['엑셀 화면 구성 및 기본 환경 이해','워크시트 구조와 셀 개념 이해','기본 데이터 입력 방법 실습'],
+    guide:[
+      {icon:'🖥️', title:'엑셀 화면 구성', desc:'리본 메뉴(탭·그룹·명령) / 수식 입력줄 / 이름 상자 / 시트 탭 / 상태 표시줄', tip:'리본 메뉴가 너무 좁으면 Ctrl+F1로 접기/펼치기'},
+      {icon:'📁', title:'서식 파일로 열기 / 저장', desc:'파일 → 새로 만들기 → 서식 파일 검색 / 저장 단축키 Ctrl+S / PDF저장: 파일 → 내보내기', tip:'처음에는 저장을 습관처럼 자주 하세요 (Ctrl+S)'},
+      {icon:'⚙️', title:'빠른 실행 도구 모음', desc:'화면 왼쪽 상단 작은 아이콘 모음 / 자주 쓰는 명령 추가 가능 / 우클릭 → 빠른 실행 도구 모음에 추가', tip:'인쇄 미리보기, 저장, 실행취소는 여기에 추가해두면 편해요'},
+      {icon:'📝', title:'데이터 입력 기초', desc:'문자: 왼쪽 정렬 자동 / 숫자: 오른쪽 정렬 자동 / 날짜: 2024-01-01 또는 2024/1/1 형식', tip:'숫자가 문자처럼 보이면 셀 앞에 작은 초록 삼각형이 생겨요'},
+      {icon:'📋', title:'워크시트 관리', desc:'시트 탭 더블클릭 → 이름 변경 / 우클릭 → 탭 색 변경 / 탭 드래그 → 순서 이동', tip:'시트 이름은 짧고 명확하게! 공백보다 언더바(_) 사용 권장'},
+    ],
     links:[
       {lbl:'Microsoft 365 사용안내',         url:'https://youtu.be/8aY4hcCvr_4'},
       {lbl:'엑셀의 기본 화면 구성',            url:'https://youtu.be/_Be3SeVHITY'},
@@ -2495,23 +2511,65 @@ const WEEKS = [
     ] },
   { w:2,  wed:'03/11', mon:'03/16', title:'데이터 입력·편집 및 기초 정제', ch:'Chapter 01', out:'산출물 ①',
     items:['데이터 수정, 채우기 기능 활용','찾기·바꾸기를 활용한 데이터 정제','데이터 입력 오류 최소화 방법 이해'],
+    guide:[
+      {icon:'✏️', title:'데이터 수정 방법', desc:'셀 클릭 후 바로 입력 → 덮어쓰기 / F2 누르면 셀 안에서 편집 / Delete → 내용만 삭제', tip:'F2가 편집모드, Esc가 취소예요. 헷갈리지 마세요!'},
+      {icon:'📊', title:'채우기 핸들 활용', desc:'셀 오른쪽 아래 ■ 점을 드래그 → 데이터 자동 채우기 / 숫자·날짜·요일 등 패턴 자동 인식', tip:'1, 2 두 개 입력 후 드래그하면 3, 4, 5… 자동으로 채워져요'},
+      {icon:'⚡', title:'빠른 채우기 (Ctrl+E)', desc:'패턴만 몇 개 보여주면 나머지 자동 완성 / 이름 추출, 전화번호 형식 변환 등에 유용', tip:'홍길동(서울) → 홍길동만 추출할 때 딱! 텍스트 함수 없이 가능'},
+      {icon:'🔍', title:'찾기·바꾸기 (Ctrl+H)', desc:'Ctrl+F → 찾기 / Ctrl+H → 찾아서 바꾸기 / 모두 바꾸기로 한 번에 정제', tip:'띄어쓰기 오류, 철자 오류를 한 번에 고칠 때 필수'},
+      {icon:'✅', title:'데이터 유효성 검사', desc:'데이터 탭 → 데이터 유효성 검사 / 목록·범위·날짜 등 입력 규칙 설정 / 잘못 입력 시 오류 메시지', tip:'드롭다운 목록 만들기: 유효성 검사 → 목록 → 항목 입력'},
+    ],
     links:[{lbl:'📚 플래시카드 — 플래시 채우기', tab:'learn', cat:'menu', fn:'flash'}] },
   { w:3,  wed:'03/18', mon:'03/23', title:'표(Table)를 활용한 데이터 구조화', ch:'Chapter 02', out:'산출물 ②',
     items:['표 서식 적용 및 표 기반 데이터 관리','표를 활용한 데이터 구조화 실습'],
+    guide:[
+      {icon:'📋', title:'표(Table)란?', desc:'Ctrl+T 또는 삽입 → 표 / 데이터 범위를 자동 인식해서 표로 변환 / 자동 필터·줄무늬 적용', tip:'표로 만들면 데이터 추가 시 수식·서식이 자동으로 확장돼요'},
+      {icon:'🎨', title:'표 서식 변경', desc:'표 디자인 탭 → 표 스타일 선택 / 머리글 행·줄무늬 행 켜기/끄기 / 요약 행 추가', tip:'표 스타일은 나중에 언제든 바꿀 수 있어요'},
+      {icon:'🔄', title:'표 → 범위로 변환', desc:'표 안 클릭 → 표 디자인 탭 → 범위로 변환 / 서식은 유지되고 표 기능만 해제', tip:'피벗테이블이나 일부 함수 사용 전에 범위 변환이 필요할 때 씁니다'},
+      {icon:'📐', title:'셀 서식 기본', desc:'홈 탭 → 글꼴·맞춤·표시형식 그룹 / Ctrl+1 → 셀 서식 창 / 병합 및 가운데 맞춤', tip:'셀 서식 단축키 Ctrl+1은 꼭 외워두세요! 거의 모든 서식이 여기에'},
+      {icon:'📏', title:'행 높이·열 너비', desc:'행/열 경계선 드래그 / 더블클릭 → 내용에 맞게 자동 조정 / 여러 열 선택 후 한 번에 조정', tip:'열 머리글(A, B, C) 경계선 더블클릭이 가장 빠른 자동 맞춤'},
+    ],
     links:[{lbl:'📚 플래시카드 — 메뉴기능', tab:'learn', cat:'menu', fn:'flash'}] },
   { w:4,  wed:'03/25', mon:'03/30', title:'계산을 위한 데이터 구조 이해', ch:'Chapter 02',
     items:['계산에 적합한 표 구조의 조건 이해','열 단위 데이터 구성 방식','수식 적용을 고려한 데이터 배열 실습'],
+    guide:[
+      {icon:'📐', title:'올바른 표 구조 조건', desc:'1행: 열 제목(헤더) / 2행~: 데이터 / 빈 행·빈 열 없애기 / 셀 병합 금지', tip:'병합 셀은 예쁘지만 정렬·필터·함수가 다 안 돼요. 실무에서 병합은 최소화!'},
+      {icon:'📊', title:'열 단위 데이터 구성', desc:'한 열 = 하나의 속성 (예: 이름 열, 금액 열) / 한 행 = 하나의 레코드 / 일관된 데이터 형식', tip:'날짜 열에 날짜·텍스트 섞으면 정렬·계산이 틀려져요'},
+      {icon:'🖨️', title:'조건부 서식 기초', desc:'홈 탭 → 조건부 서식 / 셀 강조 규칙: 특정 값 이상인 셀 색칠 / 상위/하위 규칙', tip:'데이터 막대·색조 활용하면 숫자 크기를 시각적으로 바로 파악 가능'},
+      {icon:'🖥️', title:'틀 고정 (인쇄·스크롤)', desc:'보기 탭 → 틀 고정 / 첫 행 고정: 스크롤해도 헤더 항상 보임 / 셀 선택 후 틀 고정 → 해당 위치 기준', tip:'대용량 데이터 볼 때 틀 고정 안 하면 헤더가 사라져서 헷갈려요'},
+      {icon:'🖨️', title:'인쇄 설정 기초', desc:'파일 → 인쇄 (Ctrl+P) / 용지 방향·여백·배율 조정 / 반복 인쇄 제목행 설정', tip:'인쇄 전 반드시 미리보기! 예상과 다른 경우가 많아요'},
+    ],
     links:[] },
   { w:5,  wed:'04/01', mon:'04/06', title:'수식 작성의 기초와 상대 참조', ch:'Chapter 03', out:'산출물 ④',
     items:['수식 작성 규칙 이해','상대 참조 개념 및 적용 실습'],
+    guide:[
+      {icon:'=', title:'수식 작성 규칙', desc:'반드시 = 로 시작 / 셀 주소 직접 입력 또는 클릭 / 사칙연산: + - * / / 거듭제곱: ^', tip:'=10+20 이렇게 쓰면 안 돼요! 반드시 셀 주소를 참조하세요'},
+      {icon:'↔️', title:'상대 참조', desc:'=A1+B1 형식 / 복사·자동채우기 시 위치에 따라 자동 변경 / 대부분의 일반 수식에 사용', tip:'C1에 =A1+B1 쓰고 C2에 복사하면 자동으로 =A2+B2가 돼요'},
+      {icon:'🔒', title:'절대 참조 ($)', desc:'=$A$1 형식 / F4 키로 $ 빠르게 추가 / 복사해도 항상 같은 셀 참조 / 고정값(세율·환율 등)에 사용', tip:'F4를 한 번씩 누를 때마다 $A$1 → A$1 → $A1 → A1 순서로 바뀌어요'},
+      {icon:'🔀', title:'혼합 참조', desc:'=$A1 (열 고정, 행 변경) / =A$1 (행 고정, 열 변경) / 구구단 표, 요율표 계산에 활용', tip:'구구단 표를 혼합참조로 한 번에 만들 수 있어요 — 실습해보세요!'},
+      {icon:'⚠️', title:'수식 오류 이해', desc:'#DIV/0! → 0으로 나눔 / #VALUE! → 형식 오류 / #REF! → 참조 오류 / #NAME? → 함수명 오류', tip:'오류 셀 클릭하면 왼쪽에 느낌표(!) 아이콘이 나와요. 클릭하면 원인 확인 가능'},
+    ],
     links:[{lbl:'📚 플래시카드 — 절대참조($)', tab:'learn', cat:'func', fn:'flash'},
            {lbl:'🎯 퀴즈 — 기본함수', tab:'quiz', cat:'func', fn:'quiz'}] },
   { w:6,  wed:'04/08', mon:'04/13', title:'절대 참조 및 기초 함수', ch:'Chapter 03', out:'산출물 ④',
     items:['절대 참조 개념 이해 및 활용','기초 함수(SUM, AVERAGE) 적용 실습'],
+    guide:[
+      {icon:'➕', title:'SUM / AVERAGE', desc:'=SUM(A1:A10) 범위 합계 / =AVERAGE(A1:A10) 평균 / Alt+= 로 자동 합계 빠르게 입력', tip:'범위는 마우스로 드래그해서 선택하면 편해요'},
+      {icon:'📊', title:'MAX / MIN / LARGE', desc:'=MAX(범위) 최댓값 / =MIN(범위) 최솟값 / =LARGE(범위,2) 두 번째로 큰 값', tip:'LARGE(범위,1)은 MAX와 같아요. 2등, 3등 구할 때 LARGE 써요'},
+      {icon:'🔢', title:'COUNT / COUNTA / COUNTBLANK', desc:'COUNT: 숫자 셀 개수 / COUNTA: 비어있지 않은 셀 / COUNTBLANK: 빈 셀 개수', tip:'출석부에서 출석일 세기: COUNTA / 결석일 세기: COUNTBLANK'},
+      {icon:'🏆', title:'RANK.EQ 순위 함수', desc:'=RANK.EQ(값,범위,0) / 0 또는 생략: 내림차순(1등=최댓값) / 1: 오름차순', tip:'범위는 반드시 절대참조($)로! 복사할 때 범위가 안 바뀌어야 해요 =RANK.EQ(A2,$A$2:$A$10,0)'},
+      {icon:'🔣', title:'INT / ROUND / MOD', desc:'=INT(숫자) 소수점 버림 / =ROUND(숫자,자릿수) 반올림 / =MOD(숫자,제수) 나머지', tip:'MOD(7,2)=1 / 짝수/홀수 구분, 주기 계산에 자주 써요'},
+    ],
     links:[{lbl:'📚 플래시카드 — 절대참조($)', tab:'learn', cat:'func', fn:'flash'},
            {lbl:'🎯 퀴즈 — 기본함수', tab:'quiz', cat:'func', fn:'quiz'}] },
   { w:7,  wed:'04/15', mon:'04/20', title:'IF 함수 기초 및 수식 종합 적용', ch:'Chapter 03', out:'산출물 ⑤',
     items:['IF 함수 기본 구조(단일 조건) 이해','수식·참조·함수 종합 실습'],
+    guide:[
+      {icon:'🔀', title:'IF 함수 기본', desc:'=IF(조건,참일때,거짓일때) / 예: =IF(A1>=60,"합격","불합격")', tip:'조건에 텍스트 비교 시 반드시 큰따옴표! =IF(B1="서울","수도권","지방")'},
+      {icon:'🪆', title:'중첩 IF / IFS', desc:'=IF(A1>=90,"A",IF(A1>=80,"B","C")) 안에 IF 중첩 / IFS: =IFS(A1>=90,"A",A1>=80,"B",TRUE,"C")', tip:'IFS가 더 읽기 쉬워요. 조건이 3개 이상이면 IFS 추천'},
+      {icon:'🤝', title:'IF + AND / OR 조합', desc:'=IF(AND(A1>=60,B1>=60),"통과","미통과") / =IF(OR(A1="서울",A1="부산"),"해당","해당없음")', tip:'AND는 모두 만족, OR은 하나라도 만족. 실무에서 정말 자주 써요'},
+      {icon:'🔍', title:'COUNTIF / COUNTIFS', desc:'=COUNTIF(범위,조건) / =COUNTIFS(범위1,조건1,범위2,조건2) / 개수 세기', tip:'=COUNTIF(B:B,"서울") → B열에서 서울 개수 / 와일드카드: "서울*"'},
+      {icon:'💰', title:'SUMIF / SUMIFS', desc:'=SUMIF(조건범위,조건,합계범위) / =SUMIFS(합계범위,조건범위1,조건1,…)', tip:'SUMIFS는 합계범위가 첫 번째! SUMIF와 순서 다르니 주의하세요'},
+    ],
     links:[{lbl:'📚 플래시카드 — IF', tab:'learn', cat:'func', fn:'flash'},
            {lbl:'🎯 퀴즈 — 기본함수', tab:'quiz', cat:'func', fn:'quiz'}] },
   { w:8,  wed:'04/22', mon:'04/27', title:'🖊️ 중간시험', ch:'범위: Chapter 01~03', exam:true,
@@ -2519,26 +2577,68 @@ const WEEKS = [
     links:[{lbl:'🎯 전체 퀴즈로 최종 점검', tab:'quiz', cat:'all', fn:'quiz'}] },
   { w:9,  wed:'04/29', mon:'05/04', note:'⚠️ 월요일(05/04) 임시 휴강 (징검다리 공휴일) → 보강: 06/15(월)', title:'차트 작성 및 시각화', ch:'Chapter 04', out:'산출물 ⑥',
     items:['데이터 특성에 따른 차트 선택','차트 작성 및 기본 편집'],
+    guide:[
+      {icon:'📊', title:'차트 종류 선택 기준', desc:'막대: 항목 비교 / 꺾은선: 추이·변화 / 원형: 비율(100%) / 분산형: 상관관계 / 혼합: 두 지표 동시', tip:'원형 차트는 항목이 5~6개 이하일 때 가장 효과적이에요'},
+      {icon:'⚡', title:'차트 빠르게 만들기', desc:'데이터 범위 선택 → Alt+F1 (현재 시트에 삽입) 또는 F11 (새 시트) / 삽입 탭 → 차트', tip:'먼저 데이터를 선택하고 차트를 만들어야 해요'},
+      {icon:'🎨', title:'차트 레이아웃·스타일', desc:'차트 선택 → 차트 디자인 탭 / 빠른 레이아웃으로 제목·레이블 위치 선택 / 색 변경·차트 스타일', tip:'차트 요소 더블클릭하면 해당 요소 서식 창이 바로 열려요'},
+      {icon:'📝', title:'차트 구성 요소', desc:'차트 영역 / 그림 영역 / 제목 / 범례 / 데이터 레이블 / 축 (X축·Y축) / 눈금선', tip:'차트 오른쪽 + 버튼 클릭하면 구성 요소를 켜고 끌 수 있어요'},
+      {icon:'📉', title:'스파크라인', desc:'셀 안에 들어가는 미니 차트 / 삽입 탭 → 스파크라인 / 꺾은선·막대·승패 종류', tip:'표 오른쪽에 스파크라인 추가하면 데이터 추이를 한눈에 볼 수 있어요'},
+    ],
     links:[{lbl:'📚 플래시카드 — 꺾은선형·원형·분산형 차트', tab:'learn', cat:'menu', fn:'flash'},
            {lbl:'📚 플래시카드 — 스파크라인', tab:'learn', cat:'menu', fn:'flash'}] },
   { w:10, wed:'05/06', mon:'05/11', title:'차트 편집 및 해석', ch:'Chapter 04',
     items:['차트 요소 편집','차트 해석 및 결과 설명'],
+    guide:[
+      {icon:'🖊️', title:'차트 요소 편집', desc:'요소 클릭 → 선택 / 더블클릭 → 서식 창 / 제목 클릭 후 텍스트 직접 수정 / Delete → 요소 삭제', tip:'차트 밖을 클릭하면 선택이 해제돼요. 요소 클릭이 잘 안 될 땐 천천히!'},
+      {icon:'📏', title:'축 서식 설정', desc:'축 더블클릭 → 축 서식 / 최솟값·최댓값·간격 수동 설정 / 표시 단위(천·만·억) 설정', tip:'Y축 최솟값을 0이 아닌 값으로 바꾸면 변화가 과장돼 보일 수 있어요'},
+      {icon:'🔗', title:'이중 축 혼합형 차트', desc:'계열 더블클릭 → 데이터 계열 서식 → 보조 축 / 계열 차트 종류 변경으로 막대+꺾은선 혼합', tip:'매출(막대) + 성장률(꺾은선) 함께 표현할 때 이중축 차트를 써요'},
+      {icon:'🎨', title:'그림 영역·차트 영역 서식', desc:'배경색·테두리·그림자 설정 / 차트 영역: 차트 전체 / 그림 영역: 데이터 표시 안쪽 부분', tip:'그림 영역 배경을 흰색으로 고정하면 깔끔한 보고서 차트가 돼요'},
+      {icon:'💾', title:'차트 서식 파일 저장', desc:'차트 우클릭 → 서식 파일로 저장 / 다음에 같은 스타일 차트 만들 때 재사용 가능', tip:'회사 보고서 스타일을 서식 파일로 저장해두면 매번 꾸밀 필요 없어요'},
+    ],
     links:[{lbl:'🎯 퀴즈 — 메뉴기능', tab:'quiz', cat:'menu', fn:'quiz'}] },
   { w:11, wed:'05/13', mon:'05/18', note:'⚠️ 수요일(05/13) 수업 → 05/14(목)으로 1일 순연', title:'피벗 테이블 기초', ch:'Chapter 05', out:'산출물 ⑦',
     items:['추천 피벗 테이블 활용','기본 피벗 테이블 작성 및 요약'],
+    guide:[
+      {icon:'🔄', title:'피벗 테이블이란?', desc:'수식 없이 대량 데이터를 요약·분석 / 행·열·값·필터 4개 영역으로 구성 / 드래그만으로 분석 뷰 변경', tip:'피벗 전 데이터는 반드시 빈 행·열 없는 깔끔한 표 구조여야 해요'},
+      {icon:'⚡', title:'피벗 테이블 만들기', desc:'데이터 안 클릭 → 삽입 탭 → 피벗 테이블 / 추천 피벗 테이블로 자동 생성도 가능', tip:'추천 피벗 테이블(삽입 탭)을 먼저 눌러보면 어떤 분석이 가능한지 힌트 줘요'},
+      {icon:'🗂️', title:'필드 배치 (4개 영역)', desc:'행: 세로로 나열할 항목 / 열: 가로로 나열할 항목 / 값: 계산할 숫자 / 필터: 전체 필터링', tip:'필드를 드래그해서 영역 간 이동하면 분석 뷰가 바뀌어요 — 직접 해보세요!'},
+      {icon:'📊', title:'값 집계 방식 변경', desc:'값 영역 필드 클릭 → 값 필드 설정 / 합계·개수·평균·최대·최소 선택 가능', tip:'기본이 합계(SUM)인데 개수(COUNT)나 평균(AVERAGE)으로 바꿀 수 있어요'},
+      {icon:'🎨', title:'그룹 지정·슬라이서', desc:'날짜 필드 → 그룹화 (년·분기·월) / 슬라이서 삽입 → 버튼 클릭으로 필터링 / 시간 막대로 기간 필터', tip:'슬라이서가 있으면 발표 때 청중 앞에서 실시간 필터링이 가능해요'},
+    ],
     links:[{lbl:'📚 플래시카드 — 피벗테이블', tab:'learn', cat:'menu', fn:'flash'},
            {lbl:'🎯 퀴즈 — 메뉴기능', tab:'quiz', cat:'menu', fn:'quiz'}] },
   { w:12, wed:'05/20', mon:'05/25', note:'⚠️ 월요일(05/21) 수업 → 05/22(금)으로 1일 순연 · 월요일(05/25) 부처님오신날 → 보강: 06/11(목) 3교시 국제관 707', title:'데이터 정렬·필터 및 부분합', ch:'Chapter 05',
     items:['정렬 및 사용자 지정 정렬','자동 필터를 활용한 데이터 추출','SUBTOTAL 함수를 활용한 부분합 계산'],
+    guide:[
+      {icon:'🔤', title:'정렬 (단일·다중 기준)', desc:'데이터 탭 → 정렬 / 단일: 열 하나 기준 / 다중: 기준 추가 버튼으로 2차·3차 기준 추가', tip:'정렬 전 반드시 데이터 안에 커서! 헤더 행은 자동으로 제외돼요'},
+      {icon:'🔍', title:'자동 필터', desc:'Ctrl+Shift+L 또는 데이터 탭 → 필터 / 헤더 드롭다운 → 조건 선택 / 여러 열에 동시 적용 가능', tip:'필터 적용 중이면 행 번호가 파란색으로 표시돼요'},
+      {icon:'🔬', title:'고급 필터', desc:'데이터 탭 → 고급 / 조건 범위 별도 작성 → 다른 장소에 결과 복사 / AND·OR 조건 조합 가능', tip:'조건 범위: 헤더와 조건을 같은 행에, OR 조건은 다른 행에 써요'},
+      {icon:'📑', title:'부분합', desc:'정렬 먼저! → 데이터 탭 → 부분합 / 그룹 기준·계산 함수·계산 항목 선택 / 윤곽 기호로 접기·펼치기', tip:'부분합 전에 반드시 그룹 기준 열로 정렬하세요. 안 하면 잘못된 결과 나와요'},
+      {icon:'🧮', title:'SUBTOTAL 함수', desc:'=SUBTOTAL(9,C2:C100) / 9=SUM, 1=AVERAGE, 2=COUNT / 필터 후 보이는 셀만 계산', tip:'일반 SUM은 숨겨진 행도 포함하지만 SUBTOTAL은 보이는 행만 계산해요'},
+    ],
     links:[{lbl:'📚 플래시카드 — 자동 필터', tab:'learn', cat:'menu', fn:'flash'},
            {lbl:'📚 플래시카드 — 부분합', tab:'learn', cat:'menu', fn:'flash'},
            {lbl:'⚠️ 에러 탭 — 필터·정렬 오류', tab:'error', cat:null, fn:null}] },
   { w:13, wed:'05/27', mon:'06/01', title:'데이터베이스 관리 및 요약 분석', ch:'Chapter 05',
     items:['텍스트 파일을 활용한 데이터 불러오기','중복 데이터 제거 및 데이터 통합','데이터베이스 관리 개념의 기초 이해'],
+    guide:[
+      {icon:'📂', title:'텍스트 파일 데이터 가져오기', desc:'데이터 탭 → 텍스트/CSV에서 / 구분 기호(쉼표·탭) 선택 → 열 분리 / Power Query로 정제', tip:'CSV 파일은 직접 열지 말고 데이터 탭에서 가져오기! 직접 열면 데이터 깨질 수 있어요'},
+      {icon:'🧹', title:'중복 데이터 제거', desc:'데이터 탭 → 중복 항목 제거 / 기준 열 선택 / 제거 전 원본 백업 권장', tip:'제거 후 몇 개가 삭제됐는지 메시지로 알려줘요. 예상보다 많으면 기준 열 확인!'},
+      {icon:'🔗', title:'데이터 통합', desc:'데이터 탭 → 통합 / 여러 시트·파일의 데이터를 하나로 합산 / 함수(합계·평균·개수) 선택', tip:'월별 시트를 연간 시트로 합칠 때 유용해요'},
+      {icon:'📊', title:'VLOOKUP / XLOOKUP 기초', desc:'=VLOOKUP(찾을값,범위,열번호,0) / =XLOOKUP(찾을값,찾는범위,결과범위) / 두 표 연결', tip:'XLOOKUP이 더 쉽고 강력해요. 왼쪽 검색도 되고 오류 처리도 내장돼 있어요'},
+      {icon:'🔤', title:'텍스트 함수', desc:'=LEFT(텍스트,개수) / =MID(텍스트,시작,개수) / =RIGHT(텍스트,개수) / =FIND(찾을문자,범위)', tip:'주민번호에서 생년월일 추출: =LEFT(A1,6) → 앞 6자리'},
+    ],
     links:[{lbl:'📚 플래시카드 — 고급 필터', tab:'learn', cat:'menu', fn:'flash'},
            {lbl:'🎯 퀴즈 — 메뉴기능', tab:'quiz', cat:'menu', fn:'quiz'}] },
   { w:14, wed:'06/03', mon:'06/08', note:'⚠️ 수요일(06/03) 지방선거일 → 보강: 06/10(수) 3~4교시 국제관 707', title:'데이터 분석 실습 및 생성형 AI 활용', ch:'Chapter 05', ai:true,
     items:['피벗 테이블 심화 활용 및 분석','분석 결과 해석 및 오류 점검','생성형 AI를 활용한 수식 이해 및 분석 보조 (이해 보조 목적)'],
+    guide:[
+      {icon:'📊', title:'피벗 테이블 심화', desc:'계산 필드 추가 (값 끼리 연산) / 표시 형식: 행 합계 대비 % / 그룹화: 날짜→월·분기·연도', tip:'피벗 테이블 안 셀 클릭 → 분석 탭 → 계산 필드로 새 계산식 추가 가능'},
+      {icon:'📈', title:'피벗 차트', desc:'피벗 테이블 클릭 → 분석 탭 → 피벗 차트 / 슬라이서 연동으로 동적 차트 구현', tip:'피벗 차트는 슬라이서와 연동되면 훨씬 강력해져요'},
+      {icon:'🤖', title:'ChatGPT로 함수 도움받기', desc:'수식 오류 메시지를 그대로 붙여넣기 → 원인·해결법 질문 / 원하는 계산 설명하면 함수식 생성', tip:'"엑셀에서 조건부 합계 구하는 함수 알려줘" 처럼 구체적으로 물어보세요'},
+      {icon:'🔍', title:'AI로 데이터 분석하기', desc:'데이터를 텍스트로 붙여넣기 → 패턴·이상치·키워드 분석 요청 / 함수식 설명 요청', tip:'AI는 도구예요. 결과를 그대로 믿지 말고 직접 검증하는 습관이 중요해요'},
+      {icon:'⚠️', title:'오류 점검 체크리스트', desc:'#DIV/0! #VALUE! #REF! #N/A 원인 파악 / IFERROR로 오류 숨기기 / 수식 추적 기능 활용', tip:'수식 탭 → 수식 표시(Ctrl+`) → 모든 셀 수식 한눈에 확인 가능'},
+    ],
     links:[{lbl:'📚 고급함수 플래시카드 전체', tab:'learn', cat:'adv', fn:'flash'},
            {lbl:'🎯 고급함수 퀴즈', tab:'quiz', cat:'adv', fn:'quiz'}] },
   { w:15, wed:'06/17', mon:'06/16', note:'⚠️ 기말시험 기간 1일 순연 (06/16~06/22)', title:'🖊️ 기말시험', ch:'범위: Chapter 01~05 전 범위', exam:true,
@@ -3044,6 +3144,7 @@ const SHORTCUTS = [
     {d:'새 시트 삽입',k:['Shift','F11'],warm:true},
     {d:'시트 다음으로 이동',k:['Ctrl','PgDn']},
     {d:'시트 이전으로 이동',k:['Ctrl','PgUp']},
+    {d:'리본 메뉴 접기/펼치기',k:['Ctrl','F1'],warm:true},
     {d:'인쇄 미리보기',k:['Ctrl','F2']},
     {d:'새 파일',k:['Ctrl','N']},
     {d:'파일 열기',k:['Ctrl','O']},
@@ -3815,8 +3916,8 @@ function renderPlan(){
     const noteHtml = wk.note ? `<div style="background:#fef3c7;border:1px solid #fcd34d;border-radius:7px;padding:6px 10px;font-size:.74rem;color:#92400e;margin-top:8px;line-height:1.5">${wk.note}</div>` : '';
 
     wrap.innerHTML += `
-    <div class="${cls}" onclick="toggleWeek(this)">
-      <div class="pl-whdr">
+    <div class="${cls}">
+      <div class="pl-whdr" onclick="toggleWeek(this)">
         <span class="pl-wn">${wk.w}주차</span>
         <span class="pl-wttl">${wk.title}${dateStr}<br><span style="font-size:.72rem;font-weight:500;color:var(--mu)">${wk.ch}</span></span>
         ${tagHtml}
@@ -3824,6 +3925,15 @@ function renderPlan(){
       <div class="pl-wbody">
         <div class="pl-wcontent">${items}</div>
         ${noteHtml}
+        ${wk.guide ? `
+        <div class="pl-guide-ttl"><span style="display:block;width:3px;height:11px;background:var(--blue);border-radius:2px"></span>📖 이번 주 핵심 내용</div>
+        <div class="pl-guide">${wk.guide.map(g=>`
+          <div class="pl-gcard">
+            <div class="pl-gcard-hdr"><span class="pl-gcard-ico">${g.icon}</span><span class="pl-gcard-ttl">${g.title}</span></div>
+            <div class="pl-gcard-desc">${g.desc}</div>
+            <div class="pl-gcard-tip">💡 ${g.tip}</div>
+          </div>`).join('')}
+        </div>` : ''}
         ${linkBtns ? `<div class="pl-wlinks">${linkBtns}</div>` : ''}
       </div>
     </div>`;
